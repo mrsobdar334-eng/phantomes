@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Naseeb Dry Fruit Shop | Premium Quality Dry Fruits & Nuts</title>
+    <meta name="description" content="Al Naseeb Dry Fruit Shop offers authentic, handpicked Pakistani and imported dry fruits. Quetta Kaghzi Badam, Irani Pistachios, Gilgit Walnuts, Medjool Dates, and Pure Saffron.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. Top Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <div>
+                <span class="announcement-badge"><i class="fa-solid fa-truck-fast"></i> Special Offer</span>
+                <span>Free delivery across Pakistan on orders over <strong>Rs. 3,000</strong> | 100% Fresh & Authentic</span>
+            </div>
+            <div class="announcement-links">
+                <a href="https://wa.me/923001234567" target="_blank" class="announcement-link">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp: +92 300 1234567
+                </a>
+                <a href="admin.html" class="announcement-link">
+                    <i class="fa-solid fa-lock"></i> Admin Portal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Main Navigation Header -->
+    <header class="main-header">
+        <div class="container header-inner">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo">
+                <div class="logo-symbol">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 class="serif">Al Naseeb <span>Dry Fruits</span></h1>
+                    <div class="logo-sub urdu-text">ال نصیب ڈرائی فروٹس شاپ</div>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="header-search">
+                <div class="search-input-wrap">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search almonds, pistachios, dates, walnuts..." autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="https://wa.me/923001234567" target="_blank" class="btn-whatsapp-header">
+                    <i class="fa-brands fa-whatsapp fa-lg"></i>
+                    <span>Order on WhatsApp</span>
+                </a>
+
+                <button class="btn-icon-badge" id="btn-cart-toggle" aria-label="View Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge-count" id="cart-badge-count" style="display: none;">0</span>
+                </button>
+
+                <a href="admin.html" class="btn-admin-header" title="Admin Dashboard">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Category Nav Bar -->
+    <nav class="secondary-nav">
+        <div class="container">
+            <div class="nav-links-scroll">
+                <a href="#catalog" class="nav-item active"><i class="fa-solid fa-border-all"></i> All Dry Fruits</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('almonds')"><i class="fa-solid fa-seedling"></i> Badam (Almonds)</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('pistachios')"><i class="fa-solid fa-spa"></i> Pista (Pistachios)</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('walnuts')"><i class="fa-solid fa-brain"></i> Akhrot (Walnuts)</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('cashews')"><i class="fa-solid fa-cookie"></i> Kaju (Cashews)</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('dates')"><i class="fa-solid fa-sun"></i> Ajwa & Medjool Dates</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('chilgoza')"><i class="fa-solid fa-tree"></i> Chilgoza (Pine Nuts)</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('mix')"><i class="fa-solid fa-gift"></i> Shahi Mix Boxes</a>
+                <a href="#catalog" class="nav-item" onclick="window.filterByNav('saffron')"><i class="fa-solid fa-fire-flame-curved"></i> Pure Saffron</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text-content">
+                <div class="hero-badge-pill">
+                    <i class="fa-solid fa-crown"></i> 100% Organic & Royal Grade Harvest
+                </div>
+                <h2 class="hero-title serif">
+                    Nature's Royal Harvest, <span>Handpicked</span> for Your Wellness.
+                </h2>
+                <p class="hero-description">
+                    Direct from the lush valleys of Quetta, Gilgit, and authentic international orchards. Crisp, naturally sweet, packed with essential nutrients, and vacuum-sealed for unmatched freshness.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#catalog" class="btn-primary">
+                        <i class="fa-solid fa-bag-shopping"></i> Explore Catalog
+                    </a>
+                    <a href="https://wa.me/923001234567?text=Assalam-o-Alaikum%20Al%20Naseeb%20Dry%20Fruits!%20I%20would%20like%20to%20order." target="_blank" class="btn-whatsapp-outline">
+                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-card-showcase">
+                <div class="hero-image-card">
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80" alt="Al Naseeb Dry Fruits Variety Box">
+                    <div class="floating-hero-pill">
+                        <div class="pill-icon">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">100% Natural Quality</div>
+                            <div style="font-size: 0.72rem; color: var(--text-muted);">Zero Chemical Polishing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Trust Badges Strip -->
+    <section class="trust-strip">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon-wrap">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <div>
+                    <h4>Grade A Handpicked</h4>
+                    <p>Only the largest, freshest kernels selected</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon-wrap">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+                <div>
+                    <h4>Airtight Packaging</h4>
+                    <p>Retains crisp texture & natural aroma</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon-wrap">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+                <div>
+                    <h4>Cash on Delivery</h4>
+                    <p>Inspect your parcel right at your doorstep</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon-wrap">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h4>24/7 WhatsApp Support</h4>
+                    <p>Direct assistance with orders & gift boxes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Product Catalog Section -->
+    <section class="section-wrapper" id="catalog">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">Our Finest Collection</span>
+                <h2 class="section-title serif">Premium Dry Fruits & Nuts</h2>
+                <p class="section-description">
+                    Select your preferred pack size (250g, 500g, or 1 KG). Add to your cart or order directly via WhatsApp with one click.
+                </p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="category-filter-bar">
+                <button class="cat-tab-btn active" data-category="all">
+                    <i class="fa-solid fa-grid-2"></i> All Products
+                </button>
+                <button class="cat-tab-btn" data-category="almonds">
+                    <i class="fa-solid fa-seedling"></i> Almonds (بادام)
+                </button>
+                <button class="cat-tab-btn" data-category="pistachios">
+                    <i class="fa-solid fa-spa"></i> Pistachios (پستہ)
+                </button>
+                <button class="cat-tab-btn" data-category="walnuts">
+                    <i class="fa-solid fa-brain"></i> Walnuts (اخروٹ)
+                </button>
+                <button class="cat-tab-btn" data-category="cashews">
+                    <i class="fa-solid fa-cookie"></i> Cashews (کاجو)
+                </button>
+                <button class="cat-tab-btn" data-category="dates">
+                    <i class="fa-solid fa-sun"></i> Royal Dates (کھجور)
+                </button>
+                <button class="cat-tab-btn" data-category="figs-raisins">
+                    <i class="fa-solid fa-apple-whole"></i> Figs & Raisins (انجیر)
+                </button>
+                <button class="cat-tab-btn" data-category="chilgoza">
+                    <i class="fa-solid fa-tree"></i> Chilgoza (چلغوزہ)
+                </button>
+                <button class="cat-tab-btn" data-category="mix">
+                    <i class="fa-solid fa-gift"></i> Mix Hampers
+                </button>
+                <button class="cat-tab-btn" data-category="saffron">
+                    <i class="fa-solid fa-fire-flame-curved"></i> Pure Saffron (زعفران)
+                </button>
+            </div>
+
+            <!-- Dynamic Product Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Injected via JavaScript from Supabase / Database -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Special Featured Promo Banner -->
+    <div class="container">
+        <section class="promo-banner">
+            <div>
+                <span class="hero-badge-pill" style="margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-gem"></i> Signature Gift Collection
+                </span>
+                <h3 class="promo-title serif">
+                    Al Naseeb Royal <span>Mix Dry Fruit</span> Gift Hamper
+                </h3>
+                <p style="color: #d1ded7; margin-bottom: 1.5rem; font-size: 0.98rem; line-height: 1.7;">
+                    The ultimate expression of hospitality and care. A royal 8-in-1 combination of roasted pistachios, Quetta thin-shell almonds, oven-baked cashews, Gilgit walnuts, Kandahari figs, and golden raisins packed in a luxury airtight wooden/acrylic hamper.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn-primary" onclick="window.addToCartFromCard('prod-08')">
+                        <i class="fa-solid fa-bag-shopping"></i> Add Hamper to Cart
+                    </button>
+                    <button class="btn-whatsapp-outline" onclick="window.orderOnWhatsAppDirect('prod-08')">
+                        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                    </button>
+                </div>
+            </div>
+            <div class="promo-img-wrap">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Royal Mix Dry Fruit Box">
+            </div>
+        </section>
+    </div>
+
+    <!-- 7. Why Choose Al Naseeb -->
+    <section class="section-wrapper" style="background: #f4efe6;">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">The Al Naseeb Promise</span>
+                <h2 class="section-title serif">Why Dry Fruit Lovers Choose Us</h2>
+                <p class="section-description">
+                    For over three decades, Al Naseeb has remained the gold standard in premium, unadulterated dry fruits and nuts.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <h3>Direct Orchard Sourcing</h3>
+                    <p>We skip middlemen and deal directly with traditional farmers in Quetta, Gilgit, Hunza, Iran, and Afghanistan to ensure freshest harvest.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3>Natural Oils Intact</h3>
+                    <p>Never bleached, artificially coated, or dried with harsh chemicals. Our nuts retain their natural rich oils, buttery crunch, and vitamins.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h3>Fast Doorstep Delivery</h3>
+                    <p>Safely delivered in protective packaging with Cash on Delivery nationwide. Try with complete confidence!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Testimonials Section -->
+    <section class="section-wrapper">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">Real Customer Feedback</span>
+                <h2 class="section-title serif">Loved by Families Across Pakistan</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">
+                        "The Quetta Kaghzi Badam are extraordinary! You can literally break the shell using just two fingers, and the kernels are sweet and oily. Outstanding quality."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MT</div>
+                        <div class="author-meta">
+                            <h4>Malik Tariq Mehmood</h4>
+                            <span>Verified Buyer - Lahore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">
+                        "Ordered the Royal Mix Box for a wedding gift. Beautiful packaging, arrived within 2 days in Karachi, and the Iranian Pistachios were huge and perfectly salted."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SZ</div>
+                        <div class="author-meta">
+                            <h4>Syeda Zunaira</h4>
+                            <span>Verified Buyer - Karachi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">
+                        "Their WhatsApp ordering is super quick and smooth. Within 5 minutes my order was confirmed. The Snow White Walnuts from Gilgit are zero bitter."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div class="author-meta">
+                            <h4>Dr. Asadullah Khan</h4>
+                            <span>Verified Buyer - Islamabad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Frequently Asked Questions -->
+    <section class="section-wrapper" style="background: #faf7f2;">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">Got Questions?</span>
+                <h2 class="section-title serif">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How can I place an order?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can add items to your online basket and check out with Cash on Delivery, or simply click the <strong>"Order on WhatsApp"</strong> button to send your order directly to our WhatsApp support team!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How long does delivery take?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Deliveries in major cities (Lahore, Karachi, Islamabad, Rawalpindi, Quetta) typically arrive within 24 to 48 hours. Other cities and towns take 2 to 4 business days via registered couriers.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Is Cash on Delivery (COD) available?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Cash on Delivery is available everywhere. You pay the rider upon receiving your package. Bank transfers and JazzCash / EasyPaisa are also accepted upon request.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do you offer wholesale or bulk rates for events/weddings?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we specialize in corporate hampers, wedding favors, and wholesale bulk supplies. Message us on WhatsApp (+92 300 1234567) with your quantity for special discounted wholesale quotes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Main Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h2 class="serif">Al Naseeb <span>Dry Fruits</span></h2>
+                <div class="urdu-text" style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem;">ال نصیب ڈرائی فروٹس شاپ</div>
+                <p>
+                    Purveyors of royal harvest dry fruits, gourmet nuts, and superfoods since 1994. Dedicated to purity, health, and uncompromising taste.
+                </p>
+                <div style="display: flex; gap: 0.8rem;">
+                    <a href="https://wa.me/923001234567" target="_blank" style="color: var(--whatsapp); font-size: 1.4rem;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" style="color: #dfb957; font-size: 1.4rem;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="color: #dfb957; font-size: 1.4rem;"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Dry Fruit Varieties</h3>
+                <ul class="footer-links">
+                    <li><a href="#catalog" onclick="window.filterByNav('almonds')"><i class="fa-solid fa-angle-right"></i> Quetta Kaghzi Badam</a></li>
+                    <li><a href="#catalog" onclick="window.filterByNav('pistachios')"><i class="fa-solid fa-angle-right"></i> Irani Roasted Pistachios</a></li>
+                    <li><a href="#catalog" onclick="window.filterByNav('walnuts')"><i class="fa-solid fa-angle-right"></i> Gilgit Snow Walnuts</a></li>
+                    <li><a href="#catalog" onclick="window.filterByNav('cashews')"><i class="fa-solid fa-angle-right"></i> Jumbo Roasted Cashews</a></li>
+                    <li><a href="#catalog" onclick="window.filterByNav('dates')"><i class="fa-solid fa-angle-right"></i> Madinah Ajwa & Medjool</a></li>
+                    <li><a href="#catalog" onclick="window.filterByNav('chilgoza')"><i class="fa-solid fa-angle-right"></i> Pine Nuts (Chilgoza)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#catalog"><i class="fa-solid fa-angle-right"></i> Browse Store Catalog</a></li>
+                    <li><a href="https://wa.me/923001234567" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a></li>
+                    <li><a href="admin.html"><i class="fa-solid fa-user-lock"></i> Store Admin Portal</a></li>
+                    <li><a href="supabase_schema.sql" target="_blank"><i class="fa-solid fa-database"></i> Database Schema (SQL)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get in Touch</h3>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Shop #14, Royal Dry Fruit Market, Liaquat Bazaar, Quetta & Mall Road, Lahore</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+92 300 1234567 / +92 321 7654321</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>orders@alnaseebdryfruits.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://wa.me/923001234567" target="_blank" style="color: var(--whatsapp); font-weight: 700;">Click to WhatsApp Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <div>
+                    &copy; 2026 <strong>Al Naseeb Dry Fruit Shop</strong>. All rights reserved.
+                </div>
+                <div>
+                    100% Secure Shopping | Supabase Cloud Database Connected
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 11. Slide-Over Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-basket-shopping"></i> Your Dry Fruits Basket</h3>
+            <button class="btn-close-cart" id="btn-close-cart" aria-label="Close Cart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-items-body" id="cart-items-list">
+            <!-- Injected via JavaScript -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">Rs. 0</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>Delivery Charges</span>
+                <span id="cart-shipping">Rs. 0</span>
+            </div>
+            <div class="cart-total-line">
+                <span>Total Amount:</span>
+                <span id="cart-total">Rs. 0</span>
+            </div>
+
+            <div class="cart-actions-stack">
+                <button class="btn-checkout-primary" id="btn-open-checkout">
+                    <i class="fa-solid fa-credit-card"></i> Proceed to Checkout (COD)
+                </button>
+                <button class="btn-checkout-whatsapp" id="btn-cart-whatsapp">
+                    <i class="fa-brands fa-whatsapp fa-lg"></i> Send Entire Order on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-truck-ramp-box"></i> Checkout - Cash on Delivery</h3>
+                <button class="modal-close" id="btn-close-checkout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label class="form-label" for="cust-name">Full Name *</label>
+                        <input type="text" id="cust-name" class="form-control" placeholder="e.g. Haji Muhammad Tariq" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cust-phone">WhatsApp / Phone Number *</label>
+                        <input type="tel" id="cust-phone" class="form-control" placeholder="e.g. 0300 1234567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cust-city">City *</label>
+                        <input type="text" id="cust-city" class="form-control" placeholder="e.g. Lahore, Karachi, Islamabad, Quetta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cust-address">Complete Street Address *</label>
+                        <textarea id="cust-address" class="form-control" rows="3" placeholder="House / Flat #, Street, Area / Colony name" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cust-notes">Special Instructions (Optional)</label>
+                        <input type="text" id="cust-notes" class="form-control" placeholder="e.g. Call before delivery, gift wrap, etc.">
+                    </div>
+
+                    <div style="background: #faf7f2; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.85rem; margin-bottom: 1.25rem; font-size: 0.84rem; color: var(--primary);">
+                        <i class="fa-solid fa-shield-check"></i> <strong>Payment Method:</strong> Cash on Delivery (COD). You will pay the courier rider upon delivery.
+                    </div>
+
+                    <button type="submit" class="btn-checkout-primary" style="width: 100%;">
+                        <i class="fa-solid fa-circle-check"></i> Confirm & Place Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. Product Quick View Modal -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card" style="max-width: 680px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-circle-info"></i> Product Information</h3>
+                <button class="modal-close" id="btn-close-product-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Dynamically populated via app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. Floating WhatsApp Button -->
+    <div class="floating-whatsapp" id="floating-whatsapp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    </div>
+
+    <!-- 15. Toast Notification System -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Supabase JS Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Application Scripts -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        // Helper for Secondary Nav Category Links
+        window.filterByNav = function(cat) {
+            const btn = document.querySelector(`.cat-tab-btn[data-category="${cat}"]`);
+            if (btn) btn.click();
+        };
+    </script>
+</body>
+</html>

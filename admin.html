@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Naseeb Dry Fruits | Admin Portal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Admin Stylesheet -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+    <!-- 1. Admin PIN Lock Screen -->
+    <div class="admin-lock-screen" id="admin-lock-screen">
+        <div class="lock-card">
+            <div class="lock-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h2>Al Naseeb Admin</h2>
+            <p>Enter your 4-digit PIN to access management dashboard. Default PIN is <strong>1234</strong>.</p>
+            <input type="password" id="admin-pin-input" class="pin-input" maxlength="6" placeholder="••••" autofocus autocomplete="off">
+            <div id="lock-error-msg" style="color: var(--adm-danger); font-size: 0.82rem; margin-bottom: 1rem; font-weight: 600;"></div>
+            <button class="btn-adm-primary" id="btn-unlock-admin" style="width: 100%; justify-content: center; padding: 0.85rem;">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> Access Dashboard
+            </button>
+            <div style="margin-top: 1.25rem;">
+                <a href="index.html" style="font-size: 0.84rem; color: var(--adm-muted); text-decoration: underline;">
+                    <i class="fa-solid fa-arrow-left"></i> Return to Store
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-logo-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <div>
+                <h2>Al Naseeb</h2>
+                <span>Management Hub</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#products" class="nav-tab-link active" data-tab="products">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Products Catalog</span>
+            </a>
+            <a href="#orders" class="nav-tab-link" data-tab="orders">
+                <i class="fa-solid fa-cart-flatbed"></i>
+                <span>Customer Orders</span>
+            </a>
+            <a href="#settings" class="nav-tab-link" data-tab="settings">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Supabase & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div style="margin-bottom: 0.5rem;">Logged in as: <strong>Store Administrator</strong></div>
+            <a href="index.html" class="btn-sidebar-view-shop" target="_blank">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Store
+            </a>
+            <button id="btn-admin-logout" style="width: 100%; margin-top: 0.5rem; background: none; border: 1px solid rgba(255,255,255,0.15); color: #c7d6ce; padding: 0.5rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">
+                <i class="fa-solid fa-lock"></i> Lock Dashboard
+            </button>
+        </div>
+    </aside>
+
+    <!-- 3. Admin Main Content -->
+    <main class="admin-main">
+        <!-- Topbar -->
+        <header class="admin-topbar">
+            <div class="topbar-title">
+                <h1>Store Operations Dashboard</h1>
+            </div>
+            <div class="topbar-status">
+                <div class="db-status-pill fallback" id="topbar-db-pill">
+                    <span class="status-dot"></span> Checking Database...
+                </div>
+                <a href="index.html" class="btn-adm-primary" style="background: #faf3e0; color: #b45309; border: 1px solid #dfb957;">
+                    <i class="fa-solid fa-store"></i> View Shop
+                </a>
+            </div>
+        </header>
+
+        <div class="admin-body-content">
+            <!-- Metrics Row -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-data">
+                        <h4>Total Products</h4>
+                        <div class="metric-value" id="metric-total-products">0</div>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-data">
+                        <h4>Total Orders</h4>
+                        <div class="metric-value" id="metric-total-orders">0</div>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-data">
+                        <h4>Gross Revenue</h4>
+                        <div class="metric-value" id="metric-total-revenue">Rs. 0</div>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-data">
+                        <h4>Pending Orders</h4>
+                        <div class="metric-value" id="metric-pending-orders">0</div>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: PRODUCTS MANAGEMENT -->
+            <div class="admin-tab-pane active" id="tab-products">
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Dry Fruits Catalog</h3>
+                            <p style="font-size: 0.82rem; color: var(--adm-muted);">Manage inventory, prices for 250g/500g/1kg, and product images.</p>
+                        </div>
+                        <div class="panel-actions">
+                            <input type="text" id="adm-search-products" placeholder="Search products..." style="padding: 0.55rem 0.9rem; border: 1px solid var(--adm-border); border-radius: 8px; font-size: 0.88rem;">
+                            <button class="btn-adm-primary" id="btn-open-add-product">
+                                <i class="fa-solid fa-plus"></i> Add New Product
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="adm-table">
+                            <thead>
+                                <tr>
+                                    <th>Product Details</th>
+                                    <th>Category</th>
+                                    <th>Prices (250g / 500g / 1kg)</th>
+                                    <th>Stock Status</th>
+                                    <th>Badge</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adm-products-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: ORDERS MANAGEMENT -->
+            <div class="admin-tab-pane" id="tab-orders">
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Customer Orders & Deliveries</h3>
+                            <p style="font-size: 0.82rem; color: var(--adm-muted);">Track customer orders, update delivery status, and message customers via WhatsApp.</p>
+                        </div>
+                        <div class="panel-actions">
+                            <input type="text" id="adm-search-orders" placeholder="Search by name, phone, city..." style="padding: 0.55rem 0.9rem; border: 1px solid var(--adm-border); border-radius: 8px; font-size: 0.88rem;">
+                            <button class="btn-adm-primary" id="btn-sync-orders" style="background: #15803d;">
+                                <i class="fa-solid fa-arrows-rotate"></i> Refresh & Sync
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="adm-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID & Date</th>
+                                    <th>Customer Info</th>
+                                    <th>Delivery Address</th>
+                                    <th>Items Ordered</th>
+                                    <th>Total Bill</th>
+                                    <th>Order Status</th>
+                                    <th>Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adm-orders-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: SUPABASE & STORE SETTINGS -->
+            <div class="admin-tab-pane" id="tab-settings">
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Supabase Database & Store Configuration</h3>
+                            <p style="font-size: 0.82rem; color: var(--adm-muted);">Your Supabase credentials, WhatsApp phone number, and delivery settings.</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+                        <!-- Supabase Connection Config -->
+                        <div class="settings-box">
+                            <h4><i class="fa-solid fa-database" style="color: var(--adm-gold);"></i> Supabase Backend Connection</h4>
+                            <p>Enter your Supabase project credentials. The keys you provided are loaded by default.</p>
+
+                            <div class="form-group">
+                                <label class="form-label">Supabase Project URL</label>
+                                <input type="text" id="cfg-supabase-url" class="form-control" placeholder="https://yourproject.supabase.co">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Supabase Anon Public Key (JWT / API Key)</label>
+                                <textarea id="cfg-supabase-key" class="form-control" rows="3" placeholder="eyJhbGciOi..."></textarea>
+                            </div>
+
+                            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <button type="button" class="btn-adm-primary" id="btn-test-db">
+                                    <i class="fa-solid fa-plug"></i> Test Connection
+                                </button>
+                                <button type="button" class="btn-adm-gold" id="btn-seed-db">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> Seed Default Products to Supabase
+                                </button>
+                            </div>
+
+                            <div id="db-test-result"></div>
+
+                            <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid var(--adm-border);">
+
+                            <div>
+                                <h5 style="margin-bottom: 0.4rem; color: var(--adm-primary);">First time setup in Supabase?</h5>
+                                <p style="font-size: 0.8rem; color: var(--adm-muted); margin-bottom: 0.75rem;">
+                                    If your tables haven't been created in Supabase yet, click below to copy the SQL script. Then open your Supabase Dashboard &rarr; SQL Editor &rarr; Paste &rarr; Run.
+                                </p>
+                                <button type="button" class="btn-adm-primary" id="btn-copy-sql" style="background: #2563eb;">
+                                    <i class="fa-solid fa-copy"></i> Copy Supabase SQL Schema Script
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Store & WhatsApp Details -->
+                        <div class="settings-box">
+                            <h4><i class="fa-brands fa-whatsapp" style="color: var(--adm-whatsapp);"></i> Store & WhatsApp Settings</h4>
+                            <p>Configure contact information that customers see and where WhatsApp orders are directed.</p>
+
+                            <form id="store-settings-form">
+                                <div class="form-group">
+                                    <label class="form-label">Store Brand Name</label>
+                                    <input type="text" id="cfg-store-name" class="form-control" value="Al Naseeb Dry Fruit Shop">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">WhatsApp Number for Orders (Without + or spaces)</label>
+                                    <input type="text" id="cfg-whatsapp-num" class="form-control" placeholder="923001234567" required>
+                                    <small style="color: var(--adm-muted); font-size: 0.75rem;">Example: 923001234567 (Pakistan format)</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Display Phone Number (Public)</label>
+                                    <input type="text" id="cfg-display-phone" class="form-control" placeholder="+92 300 1234567">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Store Email</label>
+                                    <input type="email" id="cfg-display-email" class="form-control" placeholder="orders@alnaseebdryfruits.com">
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Free Delivery Threshold (Rs.)</label>
+                                        <input type="number" id="cfg-free-thresh" class="form-control" value="3000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Standard Shipping Fee (Rs.)</label>
+                                        <input type="number" id="cfg-shipping-fee" class="form-control" value="250">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Admin Security PIN</label>
+                                    <input type="text" id="cfg-admin-pin" class="form-control" value="1234" maxlength="6">
+                                </div>
+
+                                <button type="submit" class="btn-adm-primary" style="width: 100%; padding: 0.75rem;">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save Store Settings
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 4. Add / Edit Product Modal -->
+    <div class="modal-overlay" id="adm-product-modal">
+        <div class="modal-card" style="max-width: 650px;">
+            <div class="modal-header">
+                <h3 id="adm-product-modal-title">Add New Dry Fruit Product</h3>
+                <button class="modal-close" id="btn-close-adm-product">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="adm-product-form">
+                    <input type="hidden" id="prod-form-id">
+
+                    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Product Name (English) *</label>
+                            <input type="text" id="prod-form-name" class="form-control" placeholder="e.g. Quetta Kaghzi Badam" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Urdu Name (اردو نام)</label>
+                            <input type="text" id="prod-form-urdu" class="form-control" placeholder="e.g. کاغذی بادام کوئٹہ" style="direction: rtl;">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Category *</label>
+                            <select id="prod-form-category" class="form-control" required>
+                                <option value="almonds">Almonds (بادام)</option>
+                                <option value="pistachios">Pistachios (پستہ)</option>
+                                <option value="walnuts">Walnuts (اخروٹ)</option>
+                                <option value="cashews">Cashews (کاجو)</option>
+                                <option value="dates">Royal Dates (کھجور)</option>
+                                <option value="figs-raisins">Figs & Raisins (انجیر اور کشمش)</option>
+                                <option value="chilgoza">Chilgoza & Pine Nuts (چلغوزہ)</option>
+                                <option value="mix">Mix Dry Fruit Boxes (مکس گفٹ باکس)</option>
+                                <option value="saffron">Pure Saffron (زعفران)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Origin / Orchard</label>
+                            <input type="text" id="prod-form-origin" class="form-control" placeholder="e.g. Quetta, Balochistan">
+                        </div>
+                    </div>
+
+                    <!-- Pricing by Weight -->
+                    <div style="background: #faf7f2; border: 1px solid var(--adm-border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <label class="form-label" style="font-weight: 700; color: var(--adm-primary); margin-bottom: 0.6rem;">
+                            <i class="fa-solid fa-weight-scale"></i> Prices by Pack Size (Rs.) *
+                        </label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--adm-muted);">250 Gram Price</label>
+                                <input type="number" id="prod-form-price250" class="form-control" placeholder="850" required>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--adm-muted);">500 Gram Price</label>
+                                <input type="number" id="prod-form-price500" class="form-control" placeholder="1650" required>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--adm-muted);">1 KG Price</label>
+                                <input type="number" id="prod-form-price1kg" class="form-control" placeholder="3150" required>
+                            </div>
+                        </div>
+                        <div style="margin-top: 0.5rem;">
+                            <label style="font-size: 0.75rem; color: var(--adm-muted);">Original 1 KG Price (for Strikethrough Sale, optional)</label>
+                            <input type="number" id="prod-form-orig1kg" class="form-control" placeholder="3600">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Badge (e.g. Best Seller, Sale -15%)</label>
+                            <input type="text" id="prod-form-badge" class="form-control" placeholder="Best Seller">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Initial Stock Quantity</label>
+                            <input type="number" id="prod-form-stock" class="form-control" value="50">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image URL *</label>
+                        <input type="url" id="prod-form-image" class="form-control" placeholder="https://..." required>
+                        <div style="margin-top: 0.4rem; font-size: 0.75rem; color: var(--adm-muted);">
+                            Quick Presets:
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1508061252445-5350f379c132?auto=format&fit=crop&w=800&q=80')">Badam</a> |
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1596706059955-46b0d9e5dbdf?auto=format&fit=crop&w=800&q=80')">Pista</a> |
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80')">Akhrot</a> |
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1536591375315-1988d689b1c7?auto=format&fit=crop&w=800&q=80')">Kaju</a> |
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80')">Dates</a> |
+                            <a href="javascript:void(0)" onclick="window.setPresetImage('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80')">Gift Box</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description & Health Benefits</label>
+                        <textarea id="prod-form-desc" class="form-control" rows="3" placeholder="Crisp, fresh harvest rich in oils..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-adm-primary" style="width: 100%; padding: 0.85rem; justify-content: center;">
+                        <i class="fa-solid fa-check"></i> Save Product
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Admin Scripts -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

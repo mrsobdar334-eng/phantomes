@@ -1,0 +1,614 @@
+/* ==========================================================================
+   Al Naseeb Dry Fruit Shop - Admin Panel Stylesheet
+   Executive Dark Emerald & Amber Dashboard
+   ========================================================================== */
+
+:root {
+    --adm-primary: #0a2e23;
+    --adm-primary-dark: #051b14;
+    --adm-primary-light: #124d3a;
+    --adm-gold: #c89d2d;
+    --adm-gold-light: #dfb957;
+    --adm-sidebar-w: 260px;
+    --adm-bg: #f4f6f5;
+    --adm-surface: #ffffff;
+    --adm-text: #1b2620;
+    --adm-muted: #64746b;
+    --adm-border: #e2e8e4;
+    --adm-success: #16a34a;
+    --adm-warning: #d97706;
+    --adm-danger: #dc2626;
+    --adm-blue: #2563eb;
+    --adm-whatsapp: #25d366;
+    --adm-radius: 12px;
+    --adm-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.admin-body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--adm-bg);
+    color: var(--adm-text);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: var(--adm-sidebar-w);
+    background: var(--adm-primary-dark);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(200, 157, 45, 0.2);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sidebar-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--adm-primary-light);
+    border: 1px solid var(--adm-gold);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--adm-gold);
+    font-size: 1.2rem;
+}
+
+.sidebar-brand h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.sidebar-brand span {
+    font-size: 0.72rem;
+    color: var(--adm-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 1.25rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.nav-tab-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.8rem 1rem;
+    color: #c7d6ce;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-tab-link i {
+    font-size: 1.05rem;
+    width: 22px;
+    color: var(--adm-gold);
+}
+
+.nav-tab-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.nav-tab-link.active {
+    background: var(--adm-primary-light);
+    color: #ffffff;
+    border-left: 3px solid var(--adm-gold);
+}
+
+.sidebar-footer {
+    padding: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.82rem;
+    color: #8da196;
+}
+
+.btn-sidebar-view-shop {
+    width: 100%;
+    padding: 0.65rem;
+    background: rgba(200, 157, 45, 0.15);
+    border: 1px solid var(--adm-gold);
+    color: var(--adm-gold-light);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.84rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.btn-sidebar-view-shop:hover {
+    background: var(--adm-gold);
+    color: var(--adm-primary-dark);
+}
+
+/* Main Content Area */
+.admin-main {
+    margin-left: var(--adm-sidebar-w);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-topbar {
+    background: var(--adm-surface);
+    height: 70px;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--adm-border);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.topbar-title h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--adm-primary);
+}
+
+.topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.db-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.db-status-pill.online {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+.db-status-pill.fallback {
+    background: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.admin-body-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+/* Dashboard Metric Cards */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: var(--adm-surface);
+    border: 1px solid var(--adm-border);
+    border-radius: var(--adm-radius);
+    padding: 1.5rem;
+    box-shadow: var(--adm-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.metric-data h4 {
+    font-size: 0.82rem;
+    color: var(--adm-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.35rem;
+}
+
+.metric-data .metric-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--adm-primary);
+}
+
+.metric-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: #f0fdf4;
+    color: var(--adm-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+.metric-card:nth-child(2) .metric-icon-box {
+    background: #eff6ff;
+    color: var(--adm-blue);
+}
+
+.metric-card:nth-child(3) .metric-icon-box {
+    background: #fffbeb;
+    color: var(--adm-gold);
+}
+
+.metric-card:nth-child(4) .metric-icon-box {
+    background: #fdf2f8;
+    color: #db2777;
+}
+
+/* Content Sections */
+.admin-tab-pane {
+    display: none;
+}
+
+.admin-tab-pane.active {
+    display: block;
+}
+
+.panel-card {
+    background: var(--adm-surface);
+    border: 1px solid var(--adm-border);
+    border-radius: var(--adm-radius);
+    box-shadow: var(--adm-shadow);
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--adm-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.panel-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--adm-primary);
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-adm-primary {
+    background: var(--adm-primary);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all 0.2s;
+}
+
+.btn-adm-primary:hover {
+    background: var(--adm-primary-light);
+}
+
+.btn-adm-gold {
+    background: var(--adm-gold);
+    color: var(--adm-primary-dark);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.btn-adm-gold:hover {
+    background: var(--adm-gold-light);
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.adm-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.adm-table th {
+    background: #f9faf9;
+    padding: 0.9rem 1.25rem;
+    color: var(--adm-muted);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--adm-border);
+    vertical-align: middle;
+}
+
+.adm-table tr:hover {
+    background: #fbfcfb;
+}
+
+.table-product-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.table-product-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #edeae4;
+}
+
+.table-product-info h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--adm-primary);
+}
+
+.table-product-info span {
+    font-size: 0.75rem;
+    color: var(--adm-muted);
+}
+
+/* Badges & Status */
+.status-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-tag.pending {
+    background: #fef3c7;
+    color: #b45309;
+}
+.status-tag.processing {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+.status-tag.shipped {
+    background: #f3e8ff;
+    color: #7e22ce;
+}
+.status-tag.delivered {
+    background: #dcfce7;
+    color: #15803d;
+}
+.status-tag.cancelled {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Action Buttons inside Table */
+.table-btn-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.table-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--adm-border);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--adm-muted);
+    transition: all 0.2s;
+}
+
+.table-icon-btn:hover {
+    color: var(--adm-primary);
+    border-color: var(--adm-primary);
+}
+
+.table-icon-btn.delete:hover {
+    color: var(--adm-danger);
+    border-color: var(--adm-danger);
+    background: #fef2f2;
+}
+
+.btn-order-whatsapp {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-order-whatsapp:hover {
+    background: #25d366;
+    color: #ffffff;
+    border-color: #25d366;
+}
+
+/* Settings Form Grid */
+.settings-grid {
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+}
+
+.settings-box {
+    background: #fbfcfb;
+    border: 1px solid var(--adm-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.settings-box h4 {
+    font-size: 1.05rem;
+    color: var(--adm-primary);
+    margin-bottom: 0.4rem;
+}
+
+.settings-box p {
+    font-size: 0.82rem;
+    color: var(--adm-muted);
+    margin-bottom: 1.25rem;
+}
+
+/* Admin Auth Pin Overlay */
+.admin-lock-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--adm-primary-dark);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.lock-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--adm-gold);
+}
+
+.lock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #faf3e0;
+    color: var(--adm-gold);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.lock-card h2 {
+    font-size: 1.4rem;
+    color: var(--adm-primary);
+    margin-bottom: 0.4rem;
+}
+
+.lock-card p {
+    font-size: 0.85rem;
+    color: var(--adm-muted);
+    margin-bottom: 1.5rem;
+}
+
+.pin-input {
+    width: 100%;
+    text-align: center;
+    letter-spacing: 6px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.75rem;
+    border: 2px solid var(--adm-border);
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.pin-input:focus {
+    outline: none;
+    border-color: var(--adm-gold);
+}
+
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 70px;
+    }
+    .sidebar-brand h2, .sidebar-brand span, .nav-tab-link span, .sidebar-footer {
+        display: none;
+    }
+    .admin-main {
+        margin-left: 70px;
+    }
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
